@@ -1,0 +1,21 @@
+{
+  "name": "shubham-ojha-portfolio",
+  "version": "1.0.0",
+  "description": "Personal developer portfolio of Shubham Ojha - Backend Developer & AI Integration",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node serve.js",
+    "start": "node serve.js"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "backend",
+    "ai",
+    "fastapi",
+    "react",
+    "full-stack"
+  ],
+  "author": "Shubham Ojha",
+  "license": "MIT"
+}
