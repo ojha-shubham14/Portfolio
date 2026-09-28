@@ -3,326 +3,232 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Shubham Ojha | Backend Developer & AI Integration</title>
-  <meta name="description" content="Portfolio of Shubham Ojha — Backend Developer & AI Integration Engineer building practical software systems, resilient APIs, and intelligent applications.">
-  <meta name="keywords" content="Shubham Ojha, Backend Developer, AI Integration, FastAPI, Python, React, RAG, Jansahay, Software Engineer">
+  <title>Shubham Ojha | Backend Developer &amp; AI Integration</title>
+  <meta name="description" content="Portfolio of Shubham Ojha — Backend Developer and AI Integration Engineer building practical software systems, resilient APIs, and interactive 3D solar system project exploration.">
+  <meta name="keywords" content="Shubham Ojha, Backend Developer, AI Integration, FastAPI, Python, React, Three.js, RAG, JanSahay, Software Engineer">
   <meta name="author" content="Shubham Ojha">
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202005_3346cc4d-ec3b-44ab-825c-b18e49f5021a.png">
-  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Shubham Ojha | Backend Developer &amp; AI Integration">
+  <meta property="og:description" content="I build practical software systems and AI-powered applications. Explore my work through a realistic 3D solar system.">
+  <meta property="og:type" content="website">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@500;600&family=Prata&display=swap" rel="stylesheet">
-
-  <!-- Blocking entrance animation detection -->
-  <script>
-    (function(){
-      try {
-        if(!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-          document.documentElement.classList.add('anim');
-        }
-      } catch(e) {}
-    })();
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- Three.js ES Module Import Map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./js/vendor/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body>
-  <!-- Ambient Space Starfield Parallax Canvas -->
-  <canvas id="starfield-canvas" class="starfield" aria-hidden="true"></canvas>
 
-  <!-- NAVIGATION -->
-  <header class="navbar" id="site-header">
-    <div class="navrow">
-      <a class="logo" href="#hero" aria-label="Shubham Ojha Home">shubham<i>ojha</i></a>
-      <nav class="links" id="site-nav" aria-label="Main Navigation">
-        <a href="#hero" class="nav-link" aria-current="page">Space</a>
-        <a href="#work" class="nav-link">Work</a>
+  <!-- ==================== SITE NAVIGATION ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <a class="nav-brand" href="#hero" aria-label="Shubham Ojha Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-title">shubham<span class="brand-accent">ojha</span></span>
+      </a>
+
+      <nav class="nav-links" id="site-nav" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link active">Profile</a>
+        <a href="#solar-system" class="nav-link">Solar System</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <a class="enroll resume-btn" href="public/SHUBHAM_RESUME.pdf" target="_blank" rel="noopener noreferrer" id="nav-resume-btn">Resume</a>
+        <a class="nav-resume-btn" href="public/SHUBHAM_RESUME.pdf" target="_blank" rel="noopener noreferrer" id="nav-resume-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          Resume
+        </a>
       </nav>
-      <button class="burger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+
+      <button class="nav-burger" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- MAIN VIEWPORT STAGE / HERO -->
-  <div class="stage" id="hero">
-    <!-- Sky Celestial Video Crossfade Background -->
-    <div class="sky" id="sky-backdrop">
-      <video class="is-active" data-planet="earth" autoplay muted loop playsinline preload="auto"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202422_3ffb4889-c520-432d-8458-038009eb40df.mp4"
-        poster="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202133_508c64b8-a31e-4290-bdfc-1187df70e0a6.png"
-        aria-hidden="true"></video>
-      <video data-planet="venus" muted loop playsinline preload="none"
-        data-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202422_b211cd74-013b-4dd3-bfd0-64491d8696fa.mp4"
-        poster="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202133_cf55d1d8-7b59-4a64-80da-d72052ae974e.png"
-        aria-hidden="true"></video>
-      <video data-planet="mars" muted loop playsinline preload="none"
-        data-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202422_51eae59a-2459-4c84-907c-cc5edfe5fea7.mp4"
-        poster="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202133_0ba6de7c-285d-43dc-b7ab-8c54c73707cb.png"
-        aria-hidden="true"></video>
-    </div>
+  <!-- ==================== SECTION 1: HERO / PROFESSIONAL LANDING PAGE ==================== -->
+  <header class="hero-section" id="hero">
+    <!-- Subtle 2D Ambient Starlight Canvas (No planets in hero) -->
+    <canvas id="hero-starfield" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
 
-    <!-- Sunlight Rim Light Glow & Celestial Vignette -->
-    <div class="sun-glow" aria-hidden="true"></div>
-
-    <!-- Hero UI Overlay -->
-    <div class="ui">
-      <!-- Portrait Integration with Warm Natural Sunlight Lighting -->
-      <div class="portrait-stage" aria-label="Portrait of Shubham Ojha">
-        <div class="portrait-halo" aria-hidden="true"></div>
-        <img class="portrait-img" src="public/images/profile.png" alt="Shubham Ojha — Backend & AI Developer" onerror="this.src='public/image/ProfileImage.jpeg'">
-        <div class="portrait-badge">
-          <span class="pulse-dot"></span>
-          <span>Open to Software & AI Roles</span>
+    <div class="hero-content">
+      <!-- Left Column: Professional Profile Information -->
+      <div class="hero-text">
+        <div class="hero-badge-row">
+          <span class="status-indicator">
+            <span class="status-pulse" aria-hidden="true"></span>
+            <span>Available for Software &amp; AI Roles</span>
+          </span>
         </div>
-      </div>
 
-      <!-- Hero Typography & Flanking Planet Exploration -->
-      <div class="copy">
-        <div class="col eyebrow">
-          <span class="ent-mask"><span class="ent-line" id="hero-eyebrow">BACKEND &bull; AI INTEGRATION &bull; FULL-STACK</span></span>
+        <h1 class="hero-title">Shubham Ojha</h1>
+
+        <div class="hero-roles">
+          <span>Backend Developer</span>
+          <span class="role-divider">&bull;</span>
+          <span>AI Integration</span>
+          <span class="role-divider">&bull;</span>
+          <span>Full-Stack Development</span>
         </div>
-        <h1 class="col title">
-          <span class="ent-mask"><span class="ent-line" id="planet-title">EARTH</span></span>
-        </h1>
-        <div class="col rule"><span></span></div>
-        <p class="col lede" id="planet-lede">
-          "I build practical software systems, resilient backend APIs, and AI-powered applications."
-          <br>Explore the celestial showcase below or travel between planetary destinations.
+
+        <p class="hero-bio">
+          I build practical software systems, resilient backend APIs, and AI-powered applications. Focused on robust system design, clean schema modeling, and production-ready machine intelligence.
         </p>
 
-        <!-- CTA Row with Left & Right Cutout Switcher Slots -->
-        <div class="col cta">
-          <!-- Left Planet Slot Button -->
-          <button class="planet planet-l" type="button" data-slot="l" aria-label="Show Planet">
-            <img data-planet="earth" alt="" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202005_3346cc4d-ec3b-44ab-825c-b18e49f5021a.png">
-            <img data-planet="venus" alt="" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202012_640b239a-d08a-4200-adb2-741bbe129ac8.png">
-            <img data-planet="mars" alt="" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202018_3d559490-f613-4ed7-a3bb-3b7e9fc90fb8.png">
-          </button>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#solar-system">
+            View My Work &darr;
+          </a>
+          <a class="btn btn-secondary" href="public/SHUBHAM_RESUME.pdf" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            Resume
+          </a>
+        </div>
 
-          <!-- Right Planet Slot Button -->
-          <button class="planet planet-r" type="button" data-slot="r" aria-label="Show Planet">
-            <img data-planet="earth" alt="" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202005_3346cc4d-ec3b-44ab-825c-b18e49f5021a.png">
-            <img data-planet="venus" alt="" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202012_640b239a-d08a-4200-adb2-741bbe129ac8.png">
-            <img data-planet="mars" alt="" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202018_3d559490-f613-4ed7-a3bb-3b7e9fc90fb8.png">
-          </button>
+        <div class="hero-socials" aria-label="Social Links">
+          <a href="https://github.com/ojha-shubham14" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/shubham-ojha14/" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="mailto:ojhashubhamprofessional@gmail.com" class="hero-social-link" aria-label="Email Shubham">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
 
-          <!-- Main Hero CTA Button -->
-          <a class="cta-primary" href="#work">EXPLORE WORK</a>
-
-          <!-- Dynamic Side Labels -->
-          <span class="label label-l" id="label-left"></span>
-          <span class="label label-r" id="label-right"></span>
+      <!-- Right Column: Natural Portrait with Cinematic Lighting -->
+      <div class="hero-visual">
+        <div class="portrait-wrapper">
+          <div class="portrait-halo" aria-hidden="true"></div>
+          <div class="portrait-inner">
+            <img class="portrait-image" src="public/images/profile.png" alt="Shubham Ojha — Backend Developer &amp; AI Integration" onerror="this.src='public/image/ProfileImage.jpeg'">
+            <div class="portrait-caption">
+              <div>
+                <div class="caption-name">Shubham Ojha</div>
+                <div class="caption-meta">Software Engineer</div>
+              </div>
+              <span class="badge-tag">Verified</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Scroll Down Prompt -->
-    <a class="scroll" href="#work" aria-label="Scroll to projects">
-      <svg viewBox="0 0 26 33" fill="none" aria-hidden="true">
-        <path d="M13 1.5 V31.5 M1.9 20.4 L13 31.5 L24.1 20.4" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
-      </svg>
+    <!-- Scroll Cue -->
+    <a class="hero-scroll-cue" href="#solar-system" aria-label="Scroll to 3D Solar System Project Explorer">
+      <div class="scroll-mouse" aria-hidden="true">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Explore Projects</span>
     </a>
-  </div>
+  </header>
 
-  <!-- MAIN SCROLL CONTENT AREA -->
-  <main class="content-container">
+  <!-- ==================== SCROLL TRANSITION ZONE ==================== -->
+  <div class="transition-zone" aria-hidden="true"></div>
 
-    <!-- ==================== SECTION 1: WORK / PLANETARY PROJECTS ==================== -->
-    <section class="section" id="work" aria-labelledby="work-heading">
-      <div class="section-header">
+  <!-- ==================== SECTION 2: 3D SOLAR SYSTEM PROJECT EXPLORER ==================== -->
+  <section class="solar-section" id="solar-system" aria-labelledby="solar-heading">
+    <div class="solar-section-header">
+      <div>
         <span class="section-tag">CELESTIAL DESTINATIONS // 01</span>
-        <h2 class="section-title" id="work-heading">Featured Projects</h2>
-        <p class="section-subtitle">
-          Each destination represents a practical software engineering milestone — engineered for resilience, scale, and real-world utility.
-        </p>
+        <h2 class="section-title" id="solar-heading">Interactive Solar System</h2>
+      </div>
+      <p class="section-subtitle">
+        Each planet in orbit represents a project destination. Hover or click a planet to inspect architectural specifications, source code, and live deployments.
+      </p>
+    </div>
+
+    <!-- 3D WebGL Canvas Viewport Stage -->
+    <div class="solar-stage" aria-label="Interactive 3D Solar System Project Exploration Viewport">
+      <div id="solar-canvas-container">
+        <!-- Three.js Canvas injected dynamically -->
       </div>
 
-      <div class="projects-grid">
-
-        <!-- PROJECT 01: JANSAHAY (EARTH) -->
-        <article class="project-card featured-destination" data-destination="earth">
-          <div class="card-planet-anchor">
-            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202005_3346cc4d-ec3b-44ab-825c-b18e49f5021a.png" alt="Earth destination icon" class="card-planet-img">
-            <span class="planet-badge">DESTINATION &bull; EARTH</span>
-          </div>
-
-          <div class="card-content">
-            <div class="card-meta">
-              <span class="project-num">PROJECT 01</span>
-              <span class="featured-pill">FLAGSHIP</span>
-            </div>
-            <h3 class="project-title">JANSAHAY</h3>
-            <p class="project-tagline">AI-driven scheme matching & citizen empowerment platform.</p>
-            
-            <p class="project-desc">
-              Bridging the gap between welfare initiatives and citizens through an intelligent RAG matching engine, multi-criteria eligibility reasoning, and bilingual query processing.
-            </p>
-
-            <div class="tech-stack-list" aria-label="Technology Stack">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">FastAPI</span>
-              <span class="tech-tag">LLM / LangChain</span>
-              <span class="tech-tag">RAG</span>
-              <span class="tech-tag">MySQL</span>
-              <span class="tech-tag">Vector Search</span>
-            </div>
-
-            <div class="card-actions">
-              <button class="btn btn-primary open-modal-btn" data-project="jansahay" type="button">
-                View Project Details <span class="arrow">&rarr;</span>
-              </button>
-              <a href="https://ojha-shubham14.github.io/JanSahay/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="Live Demo for JanSahay">
-                Live Demo &rarr;
-              </a>
-              <a href="https://github.com/ojha-shubham14/JanSahay" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="GitHub Repository for JanSahay">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PROJECT 02: DISTRIBUTED ASYNC TASK ENGINE (MARS) -->
-        <article class="project-card" data-destination="mars">
-          <div class="card-planet-anchor">
-            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202018_3d559490-f613-4ed7-a3bb-3b7e9fc90fb8.png" alt="Mars destination icon" class="card-planet-img">
-            <span class="planet-badge">DESTINATION &bull; MARS</span>
-          </div>
-
-          <div class="card-content">
-            <div class="card-meta">
-              <span class="project-num">PROJECT 02</span>
-              <span class="type-pill">BACKEND SYSTEMS</span>
-            </div>
-            <h3 class="project-title">TASK ORCHESTRATOR</h3>
-            <p class="project-tagline">High-throughput asynchronous job execution & event pipeline.</p>
-            
-            <p class="project-desc">
-              A resilient worker architecture designed to reliably process high-concurrency batch tasks, API rate-limiting adapters, exponential backoff retries, and real-time state telemetry.
-            </p>
-
-            <div class="tech-stack-list" aria-label="Technology Stack">
-              <span class="tech-tag">FastAPI</span>
-              <span class="tech-tag">Python AsyncIO</span>
-              <span class="tech-tag">Redis Queues</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">Docker</span>
-            </div>
-
-            <div class="card-actions">
-              <button class="btn btn-primary open-modal-btn" data-project="taskengine" type="button">
-                View Project Details <span class="arrow">&rarr;</span>
-              </button>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="GitHub Repository">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PROJECT 03: NEURAL DOCUQUERY (VENUS) -->
-        <article class="project-card" data-destination="venus">
-          <div class="card-planet-anchor">
-            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260827_202012_640b239a-d08a-4200-adb2-741bbe129ac8.png" alt="Venus destination icon" class="card-planet-img">
-            <span class="planet-badge">DESTINATION &bull; VENUS</span>
-          </div>
-
-          <div class="card-content">
-            <div class="card-meta">
-              <span class="project-num">PROJECT 03</span>
-              <span class="type-pill">AI PIPELINE</span>
-            </div>
-            <h3 class="project-title">DOCUQUERY AI</h3>
-            <p class="project-tagline">Semantic technical retrieval & citation verification system.</p>
-            
-            <p class="project-desc">
-              Context-grounded search engine parsing enterprise technical documentation into granular embeddings, with multi-stage reranking and strict hallucination mitigation.
-            </p>
-
-            <div class="tech-stack-list" aria-label="Technology Stack">
-              <span class="tech-tag">FastAPI</span>
-              <span class="tech-tag">LangChain</span>
-              <span class="tech-tag">ChromaDB</span>
-              <span class="tech-tag">OpenAI Embeddings</span>
-              <span class="tech-tag">TypeScript</span>
-            </div>
-
-            <div class="card-actions">
-              <button class="btn btn-primary open-modal-btn" data-project="docuquery" type="button">
-                View Project Details <span class="arrow">&rarr;</span>
-              </button>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="GitHub Repository">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
+      <!-- Dynamic Screen-Space Planet Tooltip -->
+      <div class="planet-tooltip" id="planet-tooltip" role="tooltip" aria-hidden="true">
+        <!-- Rendered dynamically by SolarEngine -->
       </div>
-    </section>
 
-    <!-- ==================== SECTION 2: ABOUT ME ==================== -->
+      <!-- Companion Project Explorer Navigation Bar -->
+      <nav class="solar-companion-panel" id="solar-companion-panel" aria-label="Planetary Destination Index">
+        <span class="solar-companion-label">Orbital Index</span>
+        <div class="solar-planets-list" id="solar-planets-list">
+          <!-- Populated dynamically via projects.js -->
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN PORTFOLIO CONTENT ==================== -->
+  <main>
+    <!-- ==================== SECTION 3: ABOUT ==================== -->
     <section class="section" id="about" aria-labelledby="about-heading">
-      <div class="section-header">
+      <div>
         <span class="section-tag">ENGINEERING PROFILE // 02</span>
         <h2 class="section-title" id="about-heading">About Shubham</h2>
       </div>
 
       <div class="about-grid">
-        <div class="about-card intro-card">
-          <h3 class="about-card-title">Who I Am & What Drives Me</h3>
+        <div class="about-card">
+          <h3 class="about-card-title">Who I Am &amp; What Drives Me</h3>
           <p class="about-text">
             I am a software engineer focused on building practical, scalable backend architectures and integrating production-ready AI capabilities into real-world applications.
           </p>
           <p class="about-text">
-            Rather than chasing superficial hype, I prioritize software fundamentals: clean schema modeling, predictable API contracts, efficient data structures and algorithms (DSA), and robust error handling.
+            Rather than chasing superficial hype, I prioritize software fundamentals: clean schema modeling, predictable REST contracts, rigorous data structures and algorithms (DSA), and robust error handling.
           </p>
           <div class="quote-box">
-            <span class="quote-symbol">&ldquo;</span>
-            <p>I build practical software systems and AI-powered applications that solve tangible human challenges.</p>
+            <p>&ldquo;I build practical software systems and AI-powered applications that solve tangible human challenges.&rdquo;</p>
           </div>
         </div>
 
-        <div class="about-card pillars-card">
+        <div class="about-card">
           <h3 class="about-card-title">Core Disciplines</h3>
           <ul class="pillars-list">
-            <li>
-              <div class="pillar-bullet"></div>
+            <li class="pillar-item">
+              <span class="pillar-bullet" aria-hidden="true"></span>
               <div>
-                <strong>Backend Engineering</strong>
-                <p>Designing RESTful APIs with FastAPI, managing concurrency, and structuring relational databases with strict integrity.</p>
+                <h4 class="pillar-title">Backend Engineering</h4>
+                <p class="pillar-desc">Designing RESTful APIs with FastAPI, managing concurrency, and structuring relational databases with strict integrity.</p>
               </div>
             </li>
-            <li>
-              <div class="pillar-bullet"></div>
+            <li class="pillar-item">
+              <span class="pillar-bullet" aria-hidden="true"></span>
               <div>
-                <strong>AI & RAG Systems</strong>
-                <p>Integrating Large Language Model APIs, developing semantic search pipelines, and grounding responses with vector retrieval.</p>
+                <h4 class="pillar-title">AI &amp; RAG Systems</h4>
+                <p class="pillar-desc">Integrating Large Language Model APIs, developing semantic search pipelines, and grounding responses with vector retrieval.</p>
               </div>
             </li>
-            <li>
-              <div class="pillar-bullet"></div>
+            <li class="pillar-item">
+              <span class="pillar-bullet" aria-hidden="true"></span>
               <div>
-                <strong>Full-Stack Cohesion</strong>
-                <p>Connecting modern reactive frontends (React) with dependable backend services to deliver unified user experiences.</p>
+                <h4 class="pillar-title">Full-Stack Cohesion</h4>
+                <p class="pillar-desc">Connecting modern reactive frontends with dependable backend services to deliver unified, accessible user experiences.</p>
               </div>
             </li>
-            <li>
-              <div class="pillar-bullet"></div>
+            <li class="pillar-item">
+              <span class="pillar-bullet" aria-hidden="true"></span>
               <div>
-                <strong>Continuous Problem Solving</strong>
-                <p>Practicing algorithmic thinking and system design principles to write code that remains maintainable as complexity grows.</p>
+                <h4 class="pillar-title">Continuous Problem Solving</h4>
+                <p class="pillar-desc">Practicing algorithmic thinking and system design principles to write code that remains maintainable as complexity grows.</p>
               </div>
             </li>
           </ul>
@@ -330,26 +236,23 @@
       </div>
     </section>
 
-    <!-- ==================== SECTION 3: SKILLS ==================== -->
+    <!-- ==================== SECTION 4: SKILLS ==================== -->
     <section class="section" id="skills" aria-labelledby="skills-heading">
-      <div class="section-header">
+      <div>
         <span class="section-tag">TECHNICAL CAPABILITIES // 03</span>
         <h2 class="section-title" id="skills-heading">Technical Arsenal</h2>
-        <p class="section-subtitle">
-          Technologies and tools verified through active development, hackathons, and practical implementations.
-        </p>
       </div>
 
       <div class="skills-grid">
         <!-- Languages -->
-        <div class="skill-category">
-          <div class="skill-category-header">
-            <span class="category-icon">&#10094;&#47;&#10095;</span>
-            <h3>Languages</h3>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">&#10094;&#47;&#10095;</span>
+            <h3 class="skill-category-title">Languages</h3>
           </div>
           <div class="skill-badges">
-            <span class="badge">C++</span>
-            <span class="badge">Python</span>
+            <span class="badge highlight">C++</span>
+            <span class="badge highlight">Python</span>
             <span class="badge">JavaScript</span>
             <span class="badge">TypeScript</span>
             <span class="badge">SQL</span>
@@ -357,10 +260,10 @@
         </div>
 
         <!-- Backend -->
-        <div class="skill-category">
-          <div class="skill-category-header">
-            <span class="category-icon">&#9881;</span>
-            <h3>Backend</h3>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">&#9881;</span>
+            <h3 class="skill-category-title">Backend</h3>
           </div>
           <div class="skill-badges">
             <span class="badge highlight">FastAPI</span>
@@ -371,29 +274,29 @@
           </div>
         </div>
 
-        <!-- AI & Integration -->
-        <div class="skill-category">
-          <div class="skill-category-header">
-            <span class="category-icon">&#9889;</span>
-            <h3>AI Integration</h3>
+        <!-- AI Integration -->
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">&#9889;</span>
+            <h3 class="skill-category-title">AI Integration</h3>
           </div>
           <div class="skill-badges">
             <span class="badge highlight">LLM APIs</span>
-            <span class="badge">LangChain</span>
-            <span class="badge">RAG Pipelines</span>
+            <span class="badge highlight">LangChain</span>
+            <span class="badge highlight">RAG Pipelines</span>
             <span class="badge">Vector Search</span>
             <span class="badge">Embeddings</span>
           </div>
         </div>
 
         <!-- Databases -->
-        <div class="skill-category">
-          <div class="skill-category-header">
-            <span class="category-icon">&#9783;</span>
-            <h3>Databases</h3>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">&#9783;</span>
+            <h3 class="skill-category-title">Databases</h3>
           </div>
           <div class="skill-badges">
-            <span class="badge">MySQL</span>
+            <span class="badge highlight">MySQL</span>
             <span class="badge">PostgreSQL</span>
             <span class="badge">Redis Caching</span>
             <span class="badge">Relational Modeling</span>
@@ -401,28 +304,28 @@
         </div>
 
         <!-- Frontend -->
-        <div class="skill-category">
-          <div class="skill-category-header">
-            <span class="category-icon">&#9638;</span>
-            <h3>Frontend</h3>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">&#9638;</span>
+            <h3 class="skill-category-title">Frontend</h3>
           </div>
           <div class="skill-badges">
-            <span class="badge">React</span>
-            <span class="badge">Vanilla CSS</span>
+            <span class="badge highlight">React</span>
             <span class="badge">HTML5</span>
+            <span class="badge">Vanilla CSS</span>
             <span class="badge">Responsive UI</span>
           </div>
         </div>
 
         <!-- Tools & DevOps -->
-        <div class="skill-category">
-          <div class="skill-category-header">
-            <span class="category-icon">&#9874;</span>
-            <h3>Tools & Workflow</h3>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">&#9874;</span>
+            <h3 class="skill-category-title">Tools &amp; Workflow</h3>
           </div>
           <div class="skill-badges">
-            <span class="badge">Git</span>
-            <span class="badge">GitHub</span>
+            <span class="badge highlight">Git</span>
+            <span class="badge highlight">GitHub</span>
             <span class="badge">VS Code</span>
             <span class="badge">Postman</span>
             <span class="badge">Linux / CLI</span>
@@ -431,37 +334,34 @@
       </div>
     </section>
 
-    <!-- ==================== SECTION 4: EXPERIENCE & HACKATHONS ==================== -->
-    <section class="section" id="experience" aria-labelledby="exp-heading">
-      <div class="section-header">
-        <span class="section-tag">TIMELINE & ACTIVITIES // 04</span>
-        <h2 class="section-title" id="exp-heading">Experience & Milestones</h2>
-        <p class="section-subtitle">
-          Hands-on technical challenges, hackathon projects, and software contributions.
-        </p>
+    <!-- ==================== SECTION 5: EXPERIENCE & HACKATHONS ==================== -->
+    <section class="section" id="experience" aria-labelledby="experience-heading">
+      <div>
+        <span class="section-tag">TIMELINE &amp; ACTIVITIES // 04</span>
+        <h2 class="section-title" id="experience-heading">Experience &amp; Milestones</h2>
       </div>
 
       <div class="timeline">
         <!-- Milestone 1 -->
         <div class="timeline-item">
-          <div class="timeline-marker"></div>
+          <div class="timeline-dot" aria-hidden="true">&#9670;</div>
           <div class="timeline-card">
             <div class="timeline-time">CURRENT &bull; 2026</div>
-            <h3 class="timeline-title">AI & Backend System Development</h3>
-            <span class="timeline-role">Independent Engineering & Open Projects</span>
+            <h3 class="timeline-title">AI &amp; Backend System Development</h3>
+            <span class="timeline-role">Independent Engineering &amp; Open Projects</span>
             <p class="timeline-desc">
-              Architecting modular microservices and knowledge retrieval pipelines. Developing Jansahay to provide accessible, AI-powered public scheme matching.
+              Architecting modular microservices and knowledge retrieval pipelines. Developing JanSahay to provide accessible, AI-powered public scheme matching.
             </p>
           </div>
         </div>
 
         <!-- Milestone 2 -->
         <div class="timeline-item">
-          <div class="timeline-marker"></div>
+          <div class="timeline-dot" aria-hidden="true">&#9670;</div>
           <div class="timeline-card">
             <div class="timeline-time">TECHNICAL HACKATHONS</div>
             <h3 class="timeline-title">Collaborative Solution Sprints</h3>
-            <span class="timeline-role">Backend & Integration Lead</span>
+            <span class="timeline-role">Backend &amp; Integration Lead</span>
             <p class="timeline-desc">
               Engineered end-to-end prototypes under constrained timeframes. Formulated database schemas, connected third-party APIs, and deployed reactive client interfaces.
             </p>
@@ -470,15 +370,15 @@
 
         <!-- Milestone 3 -->
         <div class="timeline-item">
-          <div class="timeline-marker"></div>
+          <div class="timeline-dot" aria-hidden="true">&#9670;</div>
           <div class="timeline-card">
             <div class="timeline-time">ALGORITHMIC MASTERY</div>
-            <h3 class="timeline-title">DSA & System Foundations</h3>
+            <h3 class="timeline-title">DSA &amp; System Foundations</h3>
             <span class="timeline-role">Continuous Practice</span>
             <p class="timeline-desc">
               Consistent focus on time and space complexity, graph algorithms, dynamic programming, and memory-conscious data structures in C++ and Python.
             </p>
-            <a href="https://github.com/ojha-shubham14/DSA" target="_blank" rel="noopener noreferrer" class="social-link" style="margin-top: 12px; display: inline-flex; color: var(--cyan); font-weight: 600;">
+            <a href="https://github.com/ojha-shubham14/DSA" target="_blank" rel="noopener noreferrer" class="social-link" style="margin-top: 14px; display: inline-flex; font-weight: 600;">
               View DSA GitHub Repository &rarr;
             </a>
           </div>
@@ -486,21 +386,21 @@
       </div>
     </section>
 
-    <!-- ==================== SECTION 5: CONTACT ==================== -->
+    <!-- ==================== SECTION 6: CONTACT ==================== -->
     <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
-      <div class="contact-box">
+      <div class="contact-card">
         <span class="section-tag">OPEN TRANSMISSION // 05</span>
-        <h2 class="contact-headline" id="contact-heading">Let's Build Something Meaningful.</h2>
-        <p class="contact-subtext">
-          Whether you're looking for a dedicated backend developer, an AI integration engineer, or an eager collaborator for impactful software systems — my inbox is open.
+        <h2 class="contact-title" id="contact-heading">Let's Build Something Meaningful.</h2>
+        <p class="contact-desc">
+          Whether you are looking for a dedicated backend developer, an AI integration engineer, or an eager collaborator for impactful software systems &mdash; my inbox is open.
         </p>
 
         <div class="contact-actions">
-          <a class="btn btn-primary btn-large" href="mailto:ojhashubhamprofessional@gmail.com" id="mailto-cta">
+          <a class="btn btn-primary" href="mailto:ojhashubhamprofessional@gmail.com" id="mailto-cta">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             Send An Email
           </a>
-          <button class="btn btn-outline btn-large" id="copy-email-btn" type="button" data-email="ojhashubhamprofessional@gmail.com">
+          <button class="btn btn-secondary" id="copy-email-btn" type="button" data-email="ojhashubhamprofessional@gmail.com">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             Copy Email Address
           </button>
@@ -516,57 +416,37 @@
             <span>LinkedIn</span>
           </a>
           <a href="public/SHUBHAM_RESUME.pdf" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Resume PDF">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
             <span>Resume (PDF)</span>
           </a>
         </div>
       </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="footer-row">
-        <p class="copyright">&copy; 2026 Shubham Ojha. Designed with restrained elegance & celestial depth.</p>
-        <a href="#hero" class="back-to-top" aria-label="Back to top">
-          Back to Orbit &uarr;
-        </a>
-      </div>
-    </footer>
   </main>
 
-  <!-- PROJECT DETAIL MODAL / DRAWER -->
-  <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-text">&copy; 2026 Shubham Ojha. Designed with restrained elegance &amp; celestial depth.</p>
+      <a href="#hero" class="back-to-orbit" aria-label="Back to top">Back to Orbit &uarr;</a>
+    </div>
+  </footer>
+
+  <!-- ==================== PROJECT DETAIL CASE STUDY MODAL ==================== -->
+  <div class="project-modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true"></div>
     <div class="modal-dialog">
-      <button class="modal-close" id="modal-close-btn" type="button" aria-label="Close dialog">&times;</button>
-      <div class="modal-body" id="modal-content">
-        <!-- Injected dynamically via app.js -->
+      <button class="modal-close-btn" id="modal-close-btn" type="button" aria-label="Close project modal">&times;</button>
+      <div id="modal-content">
+        <!-- Rendered dynamically by main.js -->
       </div>
     </div>
   </div>
 
-  <!-- TOAST NOTIFICATION -->
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- VENUS DSA SQUARE POPUP -->
-  <div class="venus-popup-backdrop" id="venus-popup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="venus-title">
-    <div class="venus-square-card">
-      <button class="venus-square-close" id="venus-close-btn" type="button" aria-label="Close popup">&times;</button>
-      <div class="venus-square-icon" aria-hidden="true">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      </div>
-      <div>
-        <span class="venus-tag">VENUS // ALGORITHMS</span>
-        <h3 class="venus-title" id="venus-title">github repo</h3>
-        <p class="venus-repo-name">DSA Repository</p>
-        <p class="venus-desc">Data Structures &amp; Algorithms implementations in C++ &amp; Python.</p>
-      </div>
-      <a href="https://github.com/ojha-shubham14/DSA" target="_blank" rel="noopener noreferrer" class="btn btn-primary venus-btn" id="venus-dsa-link">
-        Open DSA Repo &rarr;
-      </a>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="app.js"></script>
+  <!-- Main ES Module Bootstrap -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
